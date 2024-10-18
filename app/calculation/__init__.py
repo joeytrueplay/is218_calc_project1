@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from app.operations import addition, subtraction, multiplication, division, Number
+from app.operations import addition, subtraction, multiplication, division, modulus, power, logarithm, Number
 
 class Calculation(ABC):
     """
@@ -145,3 +145,19 @@ class Division(Calculation):
         result = self.compute()
         formatted_result = int(result) if result.is_integer() else result
         return f"Division(a={self.a}, b={self.b}, result={formatted_result})"
+
+class Modulus(Calculation):
+    """
+    Represents a modulus operation.
+    
+    Inherits from the Calculation base class and implements the `compute`, `__str__`, and `__repr__` methods.
+    """
+    
+    def compute(self) -> Number:
+        return modulus(self.a, self.b)
+
+    def __str__(self) -> str:
+        return f"Modulus: {self.a} % {self.b} = {self.compute()}"
+
+    def __repr__(self) -> str:
+        return f"Modulus(a={self.a}, b={self.b}, result={self.compute()})"
