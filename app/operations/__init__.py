@@ -1,3 +1,4 @@
+import math
 from typing import Union
 
 # Define a type alias for numbers (both int and float)
@@ -74,3 +75,31 @@ def division(a: Number, b: Number) -> Number:
     where you try the operation and handle the exception if it occurs.
     """
     return a / b  # Return the result of a divided by b
+def modulus(a: float, b: float) -> float:
+    """
+    This function takes two numbers (a and b) and returns the remainder (a % b).
+    """
+    return a % b
+
+def power(a: float, b: float) -> float:
+    """
+    This function takes two numbers (a and b) and returns the result of a raised to the power of b (a ** b).
+    """
+    if a == 0 and b < 0:
+        raise ValueError("Zero can not be rasied by negative power")
+    return a ** b
+
+def logarithm(a: float, b: float = math.e) -> float:
+    """
+    This function takes a number (a) and a base for the logarithm calculation.
+    If ther is no base typed, the natural logarithm (base e) is used.
+    Raises a ValueError if (a) is less than or equal to zero. 
+    """
+    if a <= 0:
+        raise ValueError("Logarithm input must greater than or equal to 1.")
+    if b <= 0:
+        raise ValueError("Logarithm input must greater than or equal to 1.")
+    if b == 10:
+        return math.log10(a)
+    else:
+        return math.log(a, b)
